@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Swift,iOS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本篇文章记录Swift学习使用中的一些知识点 1. String.count vs NSString.length1234let str = &quot;Dog‼🐶&quot;let nstr: NSString = &quot;Dog‼🐶&quot;print(&quot;count in String: \(str.count), count in NSString: \(nstr.length)&quot;)//&quot;count in String:">
+<meta name="keywords" content="Swift,iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SwiftTips">
+<meta property="og:url" content="http://www.heheceo.com/2018/02/09/SwiftTips/index.html">
+<meta property="og:site_name" content="Heheceo">
+<meta property="og:description" content="本篇文章记录Swift学习使用中的一些知识点 1. String.count vs NSString.length1234let str = &quot;Dog‼🐶&quot;let nstr: NSString = &quot;Dog‼🐶&quot;print(&quot;count in String: \(str.count), count in NSString: \(nstr.length)&quot;)//&quot;count in String:">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-24T09:20:13.776Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SwiftTips">
+<meta name="twitter:description" content="本篇文章记录Swift学习使用中的一些知识点 1. String.count vs NSString.length1234let str = &quot;Dog‼🐶&quot;let nstr: NSString = &quot;Dog‼🐶&quot;print(&quot;count in String: \(str.count), count in NSString: \(nstr.length)&quot;)//&quot;count in String:">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.heheceo.com/2018/02/09/SwiftTips/"/>
+
+
+
+
+
+  <title>SwiftTips | Heheceo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Heheceo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.heheceo.com/2018/02/09/SwiftTips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="浪人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Heheceo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SwiftTips</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-09T10:56:30+08:00">
+                2018-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>本篇文章记录Swift学习使用中的一些知识点</strong></p>
+<h2 id="1-String-count-vs-NSString-length"><a href="#1-String-count-vs-NSString-length" class="headerlink" title="1. String.count vs NSString.length"></a>1. String.count vs NSString.length</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">"Dog‼🐶"</span></span><br><span class="line"><span class="keyword">let</span> nstr: <span class="type">NSString</span> = <span class="string">"Dog‼🐶"</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"count in String: \(str.count), count in NSString: \(nstr.length)"</span>)</span><br><span class="line"><span class="comment">//"count in String: 5, count in NSString: 6"</span></span><br></pre></td></tr></table></figure>
+<p>刚结束Swift的String的时候肯定会对上面的输出结果产生疑问：为啥一个是5，一个是6？这肯定是Swift和Objective-c的字符编码不同的原因。我们先复习一下字符编码。</p>
+<blockquote>
+<ul>
+<li><strong>ASCII码</strong>：这个是上个世纪60年代老美定的一套字符编码，只需要一个字节，可以从00000000表示到11111111，一共可以表示2^8=256个字符。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>Unicode</strong>：ASCII码最多只能表示256个字符，英文是够了，但是对于中文以及别的语言是完全不够用的，因此中国创造了GB231编码,用2个字节表示。其他国家也可能会创造别的编码，这样新的问题又出现了:同样的编码值可能对应的是不同的文字，因此需要一种统一的编码来包含世界上所有的文字：Unicode.Unicode是世界上所有符号的集合，目前已经很大很大了。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>UTF-8</strong>: Unicode编码有一个很大的弊端，因为他所有的字符占有的位数是一样的，比如汉字严的 Unicode 是十六进制数4E25，转换成二进制数足足有15位（100111000100101），也就是说，这个符号的表示至少需要2个字节。表示其他更大的符号，可能需要3个字节或者4个字节，甚至更多，而英文字母其实只需要一个字节就可以表示，因此会造成极大的浪费。变长的字符编码UTF-8就是这么实现的，UTF-8是Unicode的一种实现方式。<br>UTF-8实现方式很简单，遵守两条规则：<br>1）对于单字节的符号，字节的第一位设为0，后面7位为这个符号的 Unicode 码。因此对于英语字母，UTF-8 编码和 ASCII 码是相同的。<br>2）对于n字节的符号（n &gt; 1），第一个字节的前n位都设为1，第n + 1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的 Unicode 码。</li>
+</ul>
+</blockquote>
+<p>NSString是基于UTF-16的，也就是说NSString每个字符最大的位数是16位，称为一个<strong>码元</strong>,当我们执行[NSString length]的时候返回的是码元的个数而不是字符的个数。而Swift里的String，他是Unicode-21位的。对于一个emoji来说它的Unicode的位数是大于16位而小于21位的，因此一个emoji在String里的长度是1，而在NSString里是2。</p>
+<p><em>关于Unicode与NSString的关系推荐一篇<a href="https://objccn.io/issue-9-1/" target="_blank" rel="noopener">文章</a> (需要翻墙)</em></p>
+<h2 id="2-Closures"><a href="#2-Closures" class="headerlink" title="2. Closures"></a>2. Closures</h2><p>Clouser用法大致思路上和的Block相似，但是细节上有很多不同的地方，Clouser有一些黑魔法，会让代码变得更简单更易读。<br>首先用内置函数 <em>sorted(by:)</em> 来介绍一下Closure的多种写法：</p>
+<ul>
+<li>最复杂的写法</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">ar result = array.sorted &#123; (a1, a2) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">return</span> a1 &gt; a2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果参数以及返回值类型是可以推断出来的，可以省略掉参数的括号和返回值</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">result = array.sorted(by: &#123; a1, a2 <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">return</span> a1 &gt; a2</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果一个closure里只有一行代码，那连关键字<strong>return</strong>都可以省略</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = array.sorted(by: &#123; a1, a2 <span class="keyword">in</span> a1 &gt; a2 &#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>我们再来简化一下参数名字，swift可以使用 $0,$1,$2… 来代替相应位置的参数的</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = array.sorted(by: &#123; $<span class="number">0</span> &gt; $<span class="number">1</span> &#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Trailing Closures，顾名思义就是函数的最后一个参数是closure，成为<strong>尾部闭包</strong>，可省略参数名来简略写法</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">trailingClosure</span><span class="params">(arg: String, closure:<span class="params">(<span class="number">_</span> name: String)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    closure(arg)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">trailingClosure(arg: <span class="string">"lps"</span>) &#123; (name) <span class="keyword">in</span>    <span class="comment">//省略了参数 closure</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"hello \(name)"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果只有一个参数且参数是closure，括号也可省略</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reversedNames = names.sorted &#123; $<span class="number">0</span> &gt; $<span class="number">1</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>closure这么多写法我们要敢于多用多尝试，一开始肯定看得有点别扭，但是用多了不知不觉就会写出漂亮的语法。<br>我们继续来看几个Closure的关键词</p>
+<ul>
+<li><strong>Escaping Closure</strong></li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">trailingClosure</span><span class="params">(arg: String, closure:<span class="params">(<span class="number">_</span> name: String)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    closure(arg)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">trailingClosure(arg: <span class="string">"lps"</span>) &#123; (name) <span class="keyword">in</span>    <span class="comment">//省略了参数 closure</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"hello \(name)"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述例子上我们发现闭包：closure会在函数里立即被调用。但是有些情况闭包在函数return之前都不会调用的，这叫做<strong>闭包逃逸</strong>，必须加入关键词 @escaping 来修饰。比如下面这个例子</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> closureList = [(<span class="type">String</span>) -&gt; <span class="type">Void</span>]()</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">trailingClosure</span><span class="params">(arg: String, closure: @escaping  <span class="params">(<span class="number">_</span> name: String)</span></span></span> -&gt; <span class="type">Void</span>) &#123;    <span class="comment">//如果不加关键词 @escaping 编译器会报错</span></span><br><span class="line">    closureList.append(closure)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">trailingClosure(arg: <span class="string">"lps"</span>) &#123; (name) <span class="keyword">in</span>    <span class="comment">//省略了参数 closure</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"hello \(name)"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">closureList.first?(<span class="string">"lps"</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>Autoclosure</strong> 通过下面的例子很容易理解</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//not autoclosure</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">autoClosure</span><span class="params">(closure: <span class="params">()</span></span></span> -&gt; <span class="type">Bool</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> closure() &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"true"</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"false"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">autoClosure(closure: (&#123;<span class="keyword">return</span> <span class="literal">true</span>&#125;))</span><br><span class="line"></span><br><span class="line"><span class="comment">//autoclosure</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">autoClosure</span><span class="params">(closure: @autoclosure <span class="params">()</span></span></span> -&gt; <span class="type">Bool</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> closure() &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"true"</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"false"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">autoClosure(closure: <span class="literal">true</span>))   <span class="comment">//因为添加了autoclosure，所以会编译器会自动将该段代码变成 autoClosure(closure: (&#123;return true&#125;))</span></span><br></pre></td></tr></table></figure>
+<p>注意Autoclosure只适合无参数的closure () -&gt; T，而且closure的实现只有一行。</p>
+<p><em>深入了解Block的原理，推荐一本书<a href="https://book.douban.com/subject/24720270/" target="_blank" rel="noopener">Objective-C高级编程</a></em></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/05/LeetCode/" rel="next" title="LeetCode(Easy)">
+                <i class="fa fa-chevron-left"></i> LeetCode(Easy)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/28/leetcode-sort/" rel="prev" title="LeetCode(排序部分)">
+                LeetCode(排序部分) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">浪人</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-String-count-vs-NSString-length"><span class="nav-number">1.</span> <span class="nav-text">1. String.count vs NSString.length</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Closures"><span class="nav-number">2.</span> <span class="nav-text">2. Closures</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">浪人</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
