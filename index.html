@@ -257,7 +257,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.heheceo.com/2018/07/20/ReadAndThink/">
+    <link itemprop="mainEntityOfPage" href="http://www.heheceo.com/2018/07/25/ReadAndThink/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="浪人">
@@ -276,7 +276,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/20/ReadAndThink/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/07/25/ReadAndThink/" itemprop="url">Untitled</a></h1>
         
 
         <div class="post-meta">
@@ -288,8 +288,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-20T11:43:48+08:00">
-                2018-07-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-25T16:21:00+08:00">
+                2018-07-25
               </time>
             
 
@@ -1130,7 +1130,7 @@
           
             <p><strong>本篇文章记录Swift学习使用中的一些知识点</strong></p>
 <h2 id="1-String-count-vs-NSString-length"><a href="#1-String-count-vs-NSString-length" class="headerlink" title="1. String.count vs NSString.length"></a>1. String.count vs NSString.length</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">"Dog‼🐶"</span></span><br><span class="line"><span class="keyword">let</span> nstr: <span class="type">NSString</span> = <span class="string">"Dog‼🐶"</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"count in String: \(str.count), count in NSString: \(nstr.length)"</span>)</span><br><span class="line"><span class="comment">//"count in String: 5, count in NSString: 6"</span></span><br></pre></td></tr></table></figure>
-<p>刚结束Swift的String的时候肯定会对上面的输出结果产生疑问：为啥一个是5，一个是6？这肯定是Swift和Objective-c的字符编码不同的原因。我们先复习一下字符编码。</p>
+<p>刚接触Swift的String的时候肯定会对上面的输出结果产生疑问：为啥一个是5，一个是6？这肯定是Swift和Objective-c的字符编码不同的原因。我们先复习一下字符编码。</p>
 <blockquote>
 <ul>
 <li><strong>ASCII码</strong>：这个是上个世纪60年代老美定的一套字符编码，只需要一个字节，可以从00000000表示到11111111，一共可以表示2^8=256个字符。</li>
