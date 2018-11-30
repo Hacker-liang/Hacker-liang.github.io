@@ -1424,7 +1424,8 @@
 <blockquote>
 <p>1.第一年赠送300美金，配置稍微选的低一点，可以免费用一年<br>2.速度很快，Youtube 1080无压力。</p>
 </blockquote>
-<h3 id="配置Google-Cloud"><a href="#配置Google-Cloud" class="headerlink" title="配置Google Cloud"></a>配置Google Cloud</h3><p>1.注册Google Cloud Platform账号，需要一张visia信用卡。注册地址：<a href="https://cloud.google.com/" target="_blank" rel="noopener">Google Cloud官网</a><br>2.创建一个VM，系统建议选择CentOS7,配置建议选低一点，最低的话大概5美金一个月。地区选择asia-east，abc都可以,勾选HTTP,HTTPS流量。<br><img src="Google-Cloud-Shadowsocks/1.png" alt=""><br>3.点击“网络”配置静态ip地址。点击”外部IP”新建一个静态IP,注意选择你vm所在的地区，每个地区只能有一个静态ip。<br><img src="Google-Cloud-Shadowsocks/2.png" alt=""></p>
+<h3 id="配置Google-Cloud"><a href="#配置Google-Cloud" class="headerlink" title="配置Google Cloud"></a>配置Google Cloud</h3><p>1.注册Google Cloud Platform账号，需要一张visa信用卡。注册地址：<a href="https://cloud.google.com/" target="_blank" rel="noopener">Google Cloud官网</a></p>
+<p>2.创建一个VM，系统建议选择CentOS7,配置建议选低一点，最低的话大概5美金一个月。地区选择asia-east，abc都可以,勾选HTTP,HTTPS流量。<br><img src="http://qiniu.heheceo.com//18-11-30/16770019.jpg" alt=""><br>3.点击“网络”配置静态ip地址。点击”外部IP”新建一个静态IP,注意选择你vm所在的地区，每个地区只能有一个静态ip。<br><img src="http://qiniu.heheceo.com//18-11-30/34983080.jpg" alt=""></p>
 <h3 id="开启shadowsocks服务"><a href="#开启shadowsocks服务" class="headerlink" title="开启shadowsocks服务"></a>开启shadowsocks服务</h3><p>使用google自带的命令行，通过ssh连接到远程服务器。链接成功后依次输入以下命令。</p>
 <blockquote>
 <p>1.sudo -i （开启管理员权限）<br>2.yum install python-pip (按照pip，为了安装shadowsocks,中途需要输入“y”来继续安装)<br>3.pip install shadowsocks</p>
@@ -1435,7 +1436,7 @@
 <p>2.输入命令 ssserver -c /etc/shadowsocks.json -d start 启动shadowsocks。</p>
 <p>至此服务器端最基本的配置完成了，配置好客户端就可以使用谷歌来查阅资料了。</p>
 <h3 id="配置-Shadowsocks-客户端"><a href="#配置-Shadowsocks-客户端" class="headerlink" title="配置 Shadowsocks 客户端"></a>配置 Shadowsocks 客户端</h3><p>去 <a href="https://github.com/shadowsocks" target="_blank" rel="noopener">Github</a> 上下载对应的客户端，完成后配置IP，端口信息即可。如下图：</p>
-<p><img src="Google-Cloud-Shadowsocks/3.png" alt=""></p>
+<p><img src="http://qiniu.heheceo.com//18-11-30/20512593.jpg" alt=""></p>
 <p> <strong>遵守法律，科学上网</strong></p>
 
           
